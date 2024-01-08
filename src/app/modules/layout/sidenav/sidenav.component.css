@@ -91,11 +91,22 @@
       }
     }
   }
+
+  .sidenav-nav-item:hover {
+    .sidenav-nav-link {
+      background-color: #fff;
+      color: #000;
+    }
+  }
 }
 
-.sidenav-nav-item:hover {
-  .sidenav-nav-link {
-    background-color: #fff;
+
+.active {
+  background-color: #fff;
+
+  .sidenav-link-icon,
+  .sidenav-link-text {
     color: #000;
   }
+
 }
