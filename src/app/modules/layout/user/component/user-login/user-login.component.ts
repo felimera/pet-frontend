@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { UserTokenService } from 'src/app/infrastructure/services/auth/user-token.service';
-import { ToastrService } from 'src/app/infrastructure/services/generally/toastr.service';
+import { CustomerService } from 'src/app/infrastructure/services/customer/customer.service';
+import { ToasterService } from 'src/app/infrastructure/services/generally/toaster.service';
 
 @Component({
   selector: 'app-user-login',
@@ -11,14 +13,16 @@ import { ToastrService } from 'src/app/infrastructure/services/generally/toastr.
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent implements OnInit {
+
   userTokenForm!: FormGroup;
   hide = true;
 
   constructor(
-    private userLogin: UserTokenService,
+    private userTokenService: UserTokenService,
     private router: Router,
     private cookieService: CookieService,
-    private toastrService: ToastrService
+    private toasterService: ToasterService,
+    private customerService: CustomerService
   ) { }
 
   ngOnInit() {
@@ -36,33 +40,33 @@ export class UserLoginComponent implements OnInit {
   }
 
   onLogin(): void {
-    this.userLogin.postToken(this.userTokenForm.value).subscribe({
+    this.userTokenService.postToken(this.userTokenForm.value).subscribe({
       next: (res: any) => {
         localStorage.setItem('TOKEN', res.jwtToken);
-        // this.consultarUsuario();
-        this.toastrService.success('This is a success message!', 'Success');
+        this.consultarUsuario();
+        this.toasterService.success('This is a success message!', 'Success');
         setTimeout(() => {
           window.location.reload();
         }, 3000);
-        this.router.navigateByUrl('/home');
-      }, error: (res:any) =>{
-        this.toastrService.error(res.error.message,"Login error");
+        this.router.navigateByUrl('/dashboard');
+      }, error: (res: any) => {
+        this.toasterService.error(res.error.message, "Login error");
       }
     });
   }
 
-  // consultarUsuario(): void {
-  //   this.customerService
-  //     .getByEmail(this.userTokenForm.get('email')!.value)
-  //     .subscribe({
-  //       next: (res: any) => {
-  //         this.cookieService.set('usuario', JSON.stringify(res));
-  //         this.toasterService.success('This is a success message!', 'Success');
-  //       }, error: (res:any) =>{
-  //         this.toasterService.error(res.error.message,"Login error");
-  //       }
-  //     })
-  // }
+  consultarUsuario(): void {
+    this.customerService
+      .getCustomerByEmail(this.userTokenForm.get('email')!.value)
+      .subscribe({
+        next: (res: any) => {
+          this.cookieService.set('usuario', JSON.stringify(res));
+          this.toasterService.success('This is a success message!', 'Success');
+        }, error: (res: any) => {
+          this.toasterService.error(res.error.message, "Login error");
+        }
+      })
+  }
 
   onCreater(): void {
     this.router.navigateByUrl('/user-create');
