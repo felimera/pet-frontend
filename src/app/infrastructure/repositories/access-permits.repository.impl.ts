@@ -12,11 +12,7 @@ export class AccessPermitsRepositoryImpl implements AccessPermitsRepository {
 
   constructor(private accessPermitsService: AccessPermitsService) { }
 
-  getAccessPermitsByIdCustomer(idCustomer: number): Observable<AccessPermits> {
-    return this.accessPermitsService.getAccessPermitsByIdCustomer(idCustomer);
-  }
-
-  getAccessPermitsWithoutId(): Observable<AccessPermits> {
-    return this.accessPermitsService.getAccessPermitsWithoutId();
+  getAccessPermitsByEmailCustomer(email: string): Observable<AccessPermits> {
+    return this.accessPermitsService.getAccessPermitsByEmailCustomer(email);
   }
 }

@@ -8,16 +8,12 @@ import { AccessPermits } from 'src/app/core/models/access-permits.model';
 })
 export class AccessPermitsService {
 
-  private apiUrl = '/api/accesspermits';
+  private apiUrl = 'http://localhost:8080/api/accesspermits';
 
   constructor(private http: HttpClient) { }
 
-  getAccessPermitsByIdCustomer(idCustomer: number): Observable<AccessPermits> {
+  getAccessPermitsByEmailCustomer(email: string): Observable<AccessPermits> {
     return this.http
-      .get<AccessPermits>(`${this.apiUrl}/link?idCustomer=${idCustomer}`);
-  }
-
-  getAccessPermitsWithoutId(): Observable<AccessPermits> {
-    return this.http.get<AccessPermits>(`http://localhost:82${this.apiUrl}/link`);
+      .get<AccessPermits>(`${this.apiUrl}/link?email=${email}`);
   }
 }
