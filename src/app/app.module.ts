@@ -7,7 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrModule } from 'ngx-toastr';
-import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { DashboardComponent } from './modules/layout/dashboard/dashboard.compone
 import { SettingsComponent } from './modules/layout/settings/settings.component';
 import { AppInterceptorService } from './infrastructure/services/auth/app-interceptor.service';
 import { UserLoginComponent } from './modules/layout/user/component/user-login/user-login.component';
+import { CustomersComponent } from './modules/layout/customers/customers.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UserLoginComponent } from './modules/layout/user/component/user-login/u
     SidenavComponent,
     DashboardComponent,
     SettingsComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    CustomersComponent
   ],
   imports: [
     BrowserModule,
