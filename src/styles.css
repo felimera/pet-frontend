@@ -29,4 +29,8 @@ body {
   .card-body {
     padding: 1rem 1.5rem;
   }
+
+  .card-body ul {
+    padding: 1rem 1.5rem;
+  }
 }
