@@ -1,0 +1,30 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin: 1.25rem;
+}
+
+.form-container h3 {
+  font-weight: 500;
+}
+
+.form-field-full-width {
+  width: 100%;
+}
+
+.checkbox-section {
+  margin: 12px 0;
+}
+
+.checkbox-margin {
+  margin: 0 12px;
+}
+
+.btn-contaniner {
+  margin: auto;
+}
+
+.btn-saved {
+  margin-right: 10px;
+}

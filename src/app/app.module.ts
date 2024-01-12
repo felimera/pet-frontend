@@ -6,6 +6,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrModule } from 'ngx-toastr';
@@ -48,6 +52,9 @@ import { RegisterPetOwnerComponent } from './modules/layout/customers/component/
     }),
     HttpClientModule,
     MatTabsModule,
+    MatButtonModule,
+    FormsModule,
+    MatCheckboxModule,
     AppRoutingModule
   ],
   providers: [
