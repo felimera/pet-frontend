@@ -5,6 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
+
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -43,6 +45,7 @@ import { CustomersComponent } from './modules/layout/customers/customers.compone
       progressBar: true, // Show progress bar
     }),
     HttpClientModule,
+    MatTabsModule,
     AppRoutingModule
   ],
   providers: [
