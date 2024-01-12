@@ -20,6 +20,7 @@ import { SettingsComponent } from './modules/layout/settings/settings.component'
 import { AppInterceptorService } from './infrastructure/services/auth/app-interceptor.service';
 import { UserLoginComponent } from './modules/layout/user/component/user-login/user-login.component';
 import { CustomersComponent } from './modules/layout/customers/customers.component';
+import { RegisterPetOwnerComponent } from './modules/layout/customers/component/register-pet-owner/register-pet-owner.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CustomersComponent } from './modules/layout/customers/customers.compone
     DashboardComponent,
     SettingsComponent,
     UserLoginComponent,
-    CustomersComponent
+    CustomersComponent,
+    RegisterPetOwnerComponent
   ],
   imports: [
     BrowserModule,
