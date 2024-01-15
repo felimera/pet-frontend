@@ -25,6 +25,7 @@ import { AppInterceptorService } from './infrastructure/services/auth/app-interc
 import { UserLoginComponent } from './modules/layout/user/component/user-login/user-login.component';
 import { CustomersComponent } from './modules/layout/customers/customers.component';
 import { RegisterPetOwnerComponent } from './modules/layout/customers/component/register-pet-owner/register-pet-owner.component';
+import { RegisterPetComponent } from './modules/layout/customers/component/register-pet/register-pet.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RegisterPetOwnerComponent } from './modules/layout/customers/component/
     SettingsComponent,
     UserLoginComponent,
     CustomersComponent,
-    RegisterPetOwnerComponent
+    RegisterPetOwnerComponent,
+    RegisterPetComponent
   ],
   imports: [
     BrowserModule,
