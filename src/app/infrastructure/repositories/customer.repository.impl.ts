@@ -16,4 +16,7 @@ export class CustomerRepositoryImpl implements CustomerRepository {
     return this.customerService.getCustomerByEmail(email);
   }
 
+  createCustomer(customer: Customer) {
+    return this.customerService.createCustomer(customer);
+  }
 }

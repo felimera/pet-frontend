@@ -9,10 +9,15 @@ import { Customer } from 'src/app/core/models/customer.model';
 export class CustomerService {
 
   private apiUrl = 'http://localhost:82/api/customer';
+  // private apiUrl = '/api/customer';
 
   constructor(private http: HttpClient) { }
 
   getCustomerByEmail(email: string): Observable<Customer> {
     return this.http.get<Customer>(`${this.apiUrl}/user?email=${email}`);
+  }
+
+  createCustomer(customer: Customer): Observable<Customer> {
+    return this.http.post<Customer>(this.apiUrl, customer);
   }
 }
