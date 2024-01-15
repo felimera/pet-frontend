@@ -1,0 +1,18 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin: 1.25rem;
+}
+
+.form-container h3 {
+  font-weight: 500;
+}
+
+.form-field-full-width {
+  width: 100%;
+}
+
+#radio-gender {
+  padding-bottom: 5px;
+}

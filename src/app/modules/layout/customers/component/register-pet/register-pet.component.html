@@ -1,9 +1,73 @@
-<p>register-pet works!</p>
-
 <div>
-  <form>
+  <form [formGroup]="petForm" class="form-container">
     <h3>Register pet information</h3>
-    <app-search-pet-owner/>
+    <app-search-pet-owner />
+
+    <mat-form-field class="form-field-full-width">
+      <mat-label>Please input your name.</mat-label>
+      <input matInput type="text" formControlName="name">
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="clearName()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="form-field-full-width">
+      <mat-label>Please input your phone.</mat-label>
+      <input matInput type="text" formControlName="phone">
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="clearPhone()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="birthdate">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="form-field-full-width">
+      <mat-label>Please input age.</mat-label>
+      <input matInput type="text" formControlName="age">
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="clearAge()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <label id="id-label-gender">Select the gender of the pet</label>
+    <mat-radio-group id="radio-gender" aria-labelledby="id-label-gender" formControlName="gender">
+      <mat-radio-button value="M">Male</mat-radio-button>
+      <mat-radio-button value="F">Female</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field>
+      <mat-label>Pet Category</mat-label>
+      <mat-select formArrayName="petCategory">
+        <mat-option *ngFor="let item of petCategories" [value]="item.id">{{item.value}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="form-field-full-width">
+      <mat-label>Please input race.</mat-label>
+      <input matInput type="text" formControlName="race">
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="clearRace()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="form-field-full-width">
+      <mat-label>Please input wheight.</mat-label>
+      <input matInput type="text" formControlName="wheight">
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="clearWheight()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter the characteristics of all your limbs:</mat-label>
+      <textarea matInput formControlName="characteristicsExtremities"></textarea>
+    </mat-form-field>
 
   </form>
 </div>
