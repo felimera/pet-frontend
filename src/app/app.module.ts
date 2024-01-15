@@ -26,6 +26,7 @@ import { UserLoginComponent } from './modules/layout/user/component/user-login/u
 import { CustomersComponent } from './modules/layout/customers/customers.component';
 import { RegisterPetOwnerComponent } from './modules/layout/customers/component/register-pet-owner/register-pet-owner.component';
 import { RegisterPetComponent } from './modules/layout/customers/component/register-pet/register-pet.component';
+import { SearchPetOwnerComponent } from './modules/layout/customers/component/search-pet-owner/search-pet-owner.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { RegisterPetComponent } from './modules/layout/customers/component/regis
     UserLoginComponent,
     CustomersComponent,
     RegisterPetOwnerComponent,
-    RegisterPetComponent
+    RegisterPetComponent,
+    SearchPetOwnerComponent
   ],
   imports: [
     BrowserModule,
