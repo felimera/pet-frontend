@@ -4,11 +4,6 @@ import { Observable, map, startWith } from 'rxjs';
 import { _MatAutocompleteBase } from '@angular/material/autocomplete';
 import { CustomerDTO } from 'src/app/infrastructure/dto/customer.dto';
 
-interface CustomerSearch {
-  id: number,
-  name: string
-}
-
 @Component({
   selector: 'app-search-pet-owner',
   templateUrl: './search-pet-owner.component.html',
@@ -20,9 +15,9 @@ export class SearchPetOwnerComponent implements OnInit {
 
   myControl = new FormControl('');
   // options: string[] = ['One', 'Two', 'Three'];
-  customerSearch: CustomerSearch[] = [
-    { id: 1, name: 'Andres Felipe Mera' },
-    { id: 2, name: 'Manuela Ramirez' }
+  customerSearch: CustomerDTO[] = [
+    { id: 1, firstName: 'Andres Felipe', lastName: 'Mera', homeAddress: '', phone: '', email: '', isOlder: false, userId: 0 },
+    { id: 2, firstName: 'Manuela', lastName: 'Ramirez', homeAddress: '', phone: '', email: '', isOlder: false, userId: 0 }
   ];
   filteredOptions: Observable<string[]> | any;
   auto: _MatAutocompleteBase | any;
@@ -34,9 +29,13 @@ export class SearchPetOwnerComponent implements OnInit {
     );
   }
 
-  private _filter(value: string): CustomerSearch[] {
+  private _filter(value: string): CustomerDTO[] {
     const filterValue = value.toLowerCase();
 
-    return this.customerSearch.filter(option => option.name.toLowerCase().includes(filterValue));
+    return this.customerSearch.filter(option => this.combineFirstAndLastName(option).toLowerCase().includes(filterValue));
+  }
+
+  public combineFirstAndLastName(customerDTO: CustomerDTO): string {
+    return customerDTO.firstName + ' ' + customerDTO.lastName;
   }
 }

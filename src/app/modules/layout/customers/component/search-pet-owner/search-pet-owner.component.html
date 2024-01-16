@@ -13,7 +13,7 @@
           [matAutocomplete]="auto">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
           <mat-option *ngFor="let option of filteredOptions | async; let track option"
-            [value]="option.id">{{option.name}}</mat-option>
+            [value]="combineFirstAndLastName(option)">{{combineFirstAndLastName(option)}}</mat-option>
         </mat-autocomplete>
       </mat-form-field>
     </form>
