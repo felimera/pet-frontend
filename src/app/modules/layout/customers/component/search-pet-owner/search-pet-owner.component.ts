@@ -5,6 +5,7 @@ import { _MatAutocompleteBase } from '@angular/material/autocomplete';
 import { CustomerDTO } from 'src/app/infrastructure/dto/customer.dto';
 import { CustomerService } from 'src/app/infrastructure/services/customer/customer.service';
 import { Customer } from 'src/app/core/models/customer.model';
+import { Role } from '../../../../../shared/enum/role-enum';
 
 @Component({
   selector: 'app-search-pet-owner',
@@ -25,7 +26,6 @@ export class SearchPetOwnerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     this.customerService
       .getAllCustomerByRole(Role.U)
       .subscribe({
