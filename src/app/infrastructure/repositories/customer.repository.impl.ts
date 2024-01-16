@@ -20,7 +20,7 @@ export class CustomerRepositoryImpl implements CustomerRepository {
     return this.customerService.createCustomer(customer);
   }
 
-  getAllCustomer(): Observable<Customer[]> {
-    return this.customerService.getAllCustomer();
+  getAllCustomerByRole(role:string): Observable<Customer[]> {
+    return this.customerService.getAllCustomerByRole(role);
   }
 }

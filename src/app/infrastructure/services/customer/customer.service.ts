@@ -21,7 +21,7 @@ export class CustomerService {
     return this.http.post<Customer>(this.apiUrl, customer);
   }
 
-  getAllCustomer(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.apiUrl);
+  getAllCustomerByRole(role: string): Observable<Customer[]> {
+    return this.http.get<Customer[]>(`${this.apiUrl}/filterrole?role=${role}`);
   }
 }

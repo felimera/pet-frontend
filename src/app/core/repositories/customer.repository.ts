@@ -4,5 +4,5 @@ import { Customer } from "../models/customer.model";
 export abstract class CustomerRepository {
   abstract getCustomerByEmail(email: string): Observable<Customer>;
   abstract createCustomer(customer: Customer): Observable<Customer>;
-  abstract getAllCustomer(): Observable<Customer[]>;
+  abstract getAllCustomerByRole(role: string): Observable<Customer[]>;
 }
