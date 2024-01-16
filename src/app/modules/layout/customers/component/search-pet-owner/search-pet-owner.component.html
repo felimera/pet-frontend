@@ -1,1 +1,22 @@
-<p>search-pet-owner works!</p>
+<div>
+  <h4>Client finder</h4>
+  <mat-radio-group aria-label="Select an option" [(ngModel)]="valueRadio">
+    <mat-radio-button value="G">Generic search.</mat-radio-button>
+    <mat-radio-button value="A">Advanced search.</mat-radio-button>
+  </mat-radio-group>
+
+  <div *ngIf="valueRadio=='G'">
+    <form class="container-form">
+      <mat-form-field class="field-full-width">
+        <mat-label>Search by customer name</mat-label>
+        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+          [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async; let track option"
+            [value]="option.id">{{option.name}}</mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </div>
+
+</div>
