@@ -19,4 +19,8 @@ export class CustomerRepositoryImpl implements CustomerRepository {
   createCustomer(customer: Customer) {
     return this.customerService.createCustomer(customer);
   }
+
+  getAllCustomer(): Observable<Customer[]> {
+    return this.customerService.getAllCustomer();
+  }
 }
