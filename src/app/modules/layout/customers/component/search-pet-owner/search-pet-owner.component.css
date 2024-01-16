@@ -1,8 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f7f7;
+  padding: 1rem 1.5rem;
+  border: none;
+  margin: 1.25rem 0 1.25rem 0;
+  box-shadow: 0 .25rem .5rem #e6edef;
+
+  h4 {
+    font-weight: 500;
+  }
+}
+
 .container-form {
   min-width: 150px;
   width: 100%;
 }
 
 .field-full-width {
+  padding-top: .3rem;
   width: 100%;
+}
+
+.container-button {
+  text-align: right;
 }

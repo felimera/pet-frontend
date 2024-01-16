@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <h4>Client finder</h4>
   <mat-radio-group aria-label="Select an option" [(ngModel)]="valueRadio">
     <mat-radio-button value="G">Generic search.</mat-radio-button>
@@ -19,4 +19,41 @@
     </form>
   </div>
 
+  <div *ngIf="valueRadio==='A'">
+
+    <mat-form-field class="field-full-width">
+      <mat-label>Customer's First Name</mat-label>
+      <input matInput type="text" [(ngModel)]="firstNameValue">
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="firstNameValue=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field class="field-full-width">
+      <mat-label>Customer's Last Name</mat-label>
+      <input matInput type="text" [(ngModel)]="lastNameValue">
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="lastNameValue=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field class="field-full-width">
+      <mat-label>Customer's email</mat-label>
+      <input matInput type="email" [(ngModel)]="emailValue">
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="emailValue=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field class="field-full-width">
+      <mat-label>Customer's phone</mat-label>
+      <input matInput type="number" [(ngModel)]="phoneValue">
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="phoneValue=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <div class="container-button">
+      <button mat-fab color="primary" aria-label="Button to consult a client." (click)="btnSearch()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>

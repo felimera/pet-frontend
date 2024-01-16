@@ -21,12 +21,18 @@ export class SearchPetOwnerComponent implements OnInit {
   filteredOptions: Observable<string[]> | any;
   auto: _MatAutocompleteBase | any;
 
+  firstNameValue:string = '';
+  lastNameValue:string = '';
+  emailValue:string = '';
+  phoneValue:string = '';
+
   constructor(
     private customerService: CustomerService
-  ) { }
+    ) { }
 
-  ngOnInit() {
-    this.customerService
+    ngOnInit() {
+
+      this.customerService
       .getAllCustomerByRole(Role.U)
       .subscribe({
         next: (customers: Customer[]) => {
@@ -37,20 +43,24 @@ export class SearchPetOwnerComponent implements OnInit {
           this.filteredOptions = this.myControl.valueChanges.pipe(
             startWith(''),
             map(value => this._filter(value || '')),
-          );
+            );
 
-        },
-        error: (error: any) => console.log(error)
-      });
-  }
+          },
+          error: (error: any) => console.log(error)
+        });
+      }
 
-  private _filter(value: string): CustomerDTO[] {
-    const filterValue = value.toLowerCase();
+      private _filter(value: string): CustomerDTO[] {
+        const filterValue = value.toLowerCase();
 
-    return this.customerSearch.filter((option: CustomerDTO) => this.combineFirstAndLastName(option).toLowerCase().includes(filterValue));
-  }
+        return this.customerSearch.filter((option: CustomerDTO) => this.combineFirstAndLastName(option).toLowerCase().includes(filterValue));
+      }
 
-  public combineFirstAndLastName(customerDTO: CustomerDTO): string {
-    return customerDTO.firstName + ' ' + customerDTO.lastName;
-  }
-}
+      public combineFirstAndLastName(customerDTO: CustomerDTO): string {
+        return customerDTO.firstName + ' ' + customerDTO.lastName;
+      }
+
+      btnSearch():void{
+        console.log('this.firstNameValue ',this.firstNameValue)
+      }
+    }
