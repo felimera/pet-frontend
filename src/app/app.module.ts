@@ -14,6 +14,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrModule } from 'ngx-toastr';
@@ -68,6 +70,8 @@ import { SearchPetOwnerComponent } from './modules/layout/customers/component/se
     MatRadioModule,
     MatSelectModule,
     MatAutocompleteModule,
+    MatDividerModule,
+    MatListModule,
     AppRoutingModule
   ],
   providers: [
