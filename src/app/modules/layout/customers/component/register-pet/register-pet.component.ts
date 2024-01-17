@@ -61,7 +61,7 @@ export class RegisterPetComponent implements OnInit {
   }
 
   receiveMessage($event: number): void {
-    console.log('$event ', $event)
+    this.petForm.get("idCustomerEntity").setValue($event);
   }
 }
 
