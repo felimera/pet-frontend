@@ -33,6 +33,7 @@ import { CustomersComponent } from './modules/layout/customers/customers.compone
 import { RegisterPetOwnerComponent } from './modules/layout/customers/component/register-pet-owner/register-pet-owner.component';
 import { RegisterPetComponent } from './modules/layout/customers/component/register-pet/register-pet.component';
 import { SearchPetOwnerComponent } from './modules/layout/customers/component/search-pet-owner/search-pet-owner.component';
+import { ColorComponent } from './modules/layout/customers/component/color/color.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { SearchPetOwnerComponent } from './modules/layout/customers/component/se
     CustomersComponent,
     RegisterPetOwnerComponent,
     RegisterPetComponent,
-    SearchPetOwnerComponent
+    SearchPetOwnerComponent,
+    ColorComponent
   ],
   imports: [
     BrowserModule,
