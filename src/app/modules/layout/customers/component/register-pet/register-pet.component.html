@@ -1,7 +1,7 @@
 <div>
   <form [formGroup]="petForm" class="form-container">
     <h3>Register pet information</h3>
-    <app-search-pet-owner />
+    <app-search-pet-owner (messageEvent)="receiveMessage($event)" />
 
     <mat-form-field class="form-field-full-width">
       <mat-label>Please input your name.</mat-label>

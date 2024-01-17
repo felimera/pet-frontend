@@ -25,3 +25,12 @@
 .container-button {
   text-align: right;
 }
+
+.btn-seletion {
+  width: 100%;
+  text-align: right;
+}
+
+.text-uppercase {
+  text-transform: capitalize;
+}

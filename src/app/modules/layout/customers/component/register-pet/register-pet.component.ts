@@ -40,20 +40,28 @@ export class RegisterPetComponent implements OnInit {
     });
   }
 
-  clearName() {
+  clearName(): void {
     this.petForm.get("name").setValue('');
   }
-  clearAge() {
+
+  clearAge(): void {
     this.petForm.get("age").setValue("");
   }
-  clearPhone() {
+
+  clearPhone(): void {
     this.petForm.get("phone").setValue("");
   }
-  clearWheight() {
+
+  clearWheight(): void {
     this.petForm.get("wheight");
   }
-  clearRace() {
+
+  clearRace(): void {
     this.petForm.get("race").setValue("");
+  }
+
+  receiveMessage($event: number): void {
+    console.log('$event ', $event)
   }
 }
 

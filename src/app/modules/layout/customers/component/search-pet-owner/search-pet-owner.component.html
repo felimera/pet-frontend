@@ -13,7 +13,9 @@
           [matAutocomplete]="auto">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
           <mat-option *ngFor="let option of filteredOptions | async; let track option"
-            [value]="combineFirstAndLastName(option)">{{combineFirstAndLastName(option)}}</mat-option>
+            [value]="combineFirstAndLastName(option)"
+            (onSelectionChange)="selectCustomer(option.id)"
+            >{{combineFirstAndLastName(option)}}</mat-option>
         </mat-autocomplete>
       </mat-form-field>
     </form>
@@ -54,6 +56,18 @@
       <button mat-fab color="primary" aria-label="Button to consult a client." (click)="btnSearch()">
         <mat-icon>search</mat-icon>
       </button>
+    </div>
+    <div>
+      <mat-list *ngFor="let entity of customerSearchList">
+        <mat-list-item>
+          <button class="btn-seletion text-uppercase" mat-raised-button :key="entity.id"
+            (click)="addSelectedCustomer(entity.id)" [value]="entity" [color]="isValidIcon(entity)?'primary':''">
+            <mat-icon *ngIf="isValidIcon(entity)">check_circle</mat-icon>
+            {{entity.firstName}} {{entity.lastName}}
+          </button>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
     </div>
   </div>
 </div>
