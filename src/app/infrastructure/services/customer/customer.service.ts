@@ -24,4 +24,32 @@ export class CustomerService {
   getAllCustomerByRole(role: string): Observable<Customer[]> {
     return this.http.get<Customer[]>(`${this.apiUrl}/filterrole?role=${role}`);
   }
+
+  getCustumerMultipleParameter(firstName: string, lastName: string, phone: string, email: string, role: string): Observable<Customer[]> {
+    let url = `${this.apiUrl}/searchparameter?`;
+    if (firstName) {
+      url = url + 'firstName=' + firstName;
+    }
+    if (lastName) {
+      if (url)
+        url = url + '&';
+      url = url + 'lastName=' + lastName;
+    }
+    if (phone) {
+      if (url)
+        url = url + '&';
+      url = url + 'phone=' + phone;
+    }
+    if (email) {
+      if (url)
+        url = url + '&';
+      url = url + 'email=' + email;
+    }
+    if (role) {
+      if (url)
+        url = url + '&';
+      url = url + 'role=' + role;
+    }
+    return this.http.get<Customer[]>(url)
+  }
 }
