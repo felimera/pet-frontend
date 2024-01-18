@@ -1,3 +1,12 @@
-<p>
-  type-figure works!
-</p>
+<form class="field-form">
+  <mat-form-field class="field-full-width">
+    <mat-label>Type figure</mat-label>
+    <input type="text" placeholder="Pick one" matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async; let track option" [value]="option.name"
+        (onSelectionChange)="selectedTypeFigureValue(option.id)">
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
