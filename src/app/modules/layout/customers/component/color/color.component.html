@@ -1,14 +1,12 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Number</mat-label>
-    <input type="text"
-           placeholder="Pick one"
-           aria-label="Number"
-           matInput
-           [formControl]="myControl"
-           [matAutocomplete]="auto">
+<form class="field-form">
+  <mat-form-field class="field-full-width">
+    <mat-label>Color</mat-label>
+    <input type="text" placeholder="Pick one" matInput [formControl]="myControl" [matAutocomplete]="auto">
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions | async; let track option" [value]="option">{{option}}</mat-option>
+      <mat-option *ngFor="let option of filteredOptions | async; let track option" [value]="option.name">
+        {{option.name}}
+        <mat-icon aria-hidden="false" aria-label="Example home icon" color="#3456" fontIcon="circle"></mat-icon>
+      </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 </form>
