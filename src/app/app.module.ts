@@ -35,6 +35,7 @@ import { RegisterPetComponent } from './modules/layout/customers/component/regis
 import { SearchPetOwnerComponent } from './modules/layout/customers/component/search-pet-owner/search-pet-owner.component';
 import { ColorComponent } from './modules/layout/customers/component/color/color.component';
 import { BodySizeComponent } from './modules/layout/customers/component/body-size/body-size.component';
+import { TypeFigureComponent } from './modules/layout/customers/component/type-figure/type-figure.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { BodySizeComponent } from './modules/layout/customers/component/body-siz
     RegisterPetComponent,
     SearchPetOwnerComponent,
     ColorComponent,
-    BodySizeComponent
+    BodySizeComponent,
+    TypeFigureComponent
   ],
   imports: [
     BrowserModule,

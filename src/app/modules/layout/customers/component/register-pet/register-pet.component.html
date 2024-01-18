@@ -71,8 +71,11 @@
 
     <label>Select the predominant color of the pet's hair</label>
     <app-color (mgColorEvent)="receiveColorMessage($event)" />
-    
+
     <label>Select the pet's body size</label>
     <app-body-size (mgBodySizeEvent)="receiveBodySizeMessage($event)" />
+
+    <label>Select the type of pet figure</label>
+    <app-type-figure/>
   </form>
 </div>
