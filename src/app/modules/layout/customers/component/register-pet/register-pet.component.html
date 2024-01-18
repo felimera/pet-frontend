@@ -69,6 +69,7 @@
       <textarea matInput formControlName="characteristicsExtremities"></textarea>
     </mat-form-field>
 
-    <app-color />
+    <label>Select the predominant color of the pet's hair</label>
+    <app-color (mgColorEvent)="receiveColorMessage($event)" />
   </form>
 </div>

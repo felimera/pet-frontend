@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, map, startWith } from 'rxjs';
 import { Color } from 'src/app/core/models/color.model';
@@ -11,9 +11,14 @@ import { ColorService } from 'src/app/infrastructure/services/color/color.servic
   styleUrls: ['./color.component.css']
 })
 export class ColorComponent implements OnInit {
+
+  @Output() mgColorEvent = new EventEmitter<number>();
+
   myControl = new FormControl('');
   colorDTOs: ColorDTO[] = [];
   filteredOptions!: Observable<ColorDTO[]>;
+
+  idColorValue: number | undefined;
 
   constructor(private colorService: ColorService) { }
 
@@ -41,5 +46,10 @@ export class ColorComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.colorDTOs.filter((option: ColorDTO) => option.name.toLowerCase().includes(filterValue));
+  }
+
+  selectedColor(id: number): void {
+    this.idColorValue = id;
+    this.mgColorEvent.emit(this.idColorValue);
   }
 }
