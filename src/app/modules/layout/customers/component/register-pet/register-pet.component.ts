@@ -67,9 +67,17 @@ export class RegisterPetComponent implements OnInit {
   receiveColorMessage($event: number): void {
     this.petForm.get("idHairColorEntity").setValue($event);
   }
-  
+
   receiveBodySizeMessage($event: number): void {
     this.petForm.get("idBodySizeEntity").setValue($event);
+  }
+
+  receiveTypeFigureMessage($event: number): void {
+    this.petForm.get("idTypeFigureEntity").setValue($event);
+  }
+
+  receiveEyeColorMessage($event: number): void {
+    this.petForm.get("idEyeColorEntity").setValue($event);
   }
 }
 
