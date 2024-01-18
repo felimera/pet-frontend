@@ -33,3 +33,15 @@
 .label-select-row {
   margin: 5rem .1rem;
 }
+
+.btn-contaniner {
+  margin: auto;
+}
+
+.btn-saved {
+  margin-right: 1rem;
+}
+
+.btn-cancel {
+  margin-left: 1.2rem;
+}

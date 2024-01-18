@@ -79,5 +79,9 @@ export class RegisterPetComponent implements OnInit {
   receiveEyeColorMessage($event: number): void {
     this.petForm.get("idEyeColorEntity").setValue($event);
   }
+
+  onCreater(): void {
+    console.log('this.petForm.value', this.petForm.value);
+  }
 }
 

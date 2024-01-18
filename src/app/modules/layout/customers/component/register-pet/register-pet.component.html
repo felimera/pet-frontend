@@ -86,5 +86,10 @@
         <app-color (mgColorEvent)="receiveEyeColorMessage($event)" />
       </div>
     </div>
+
+    <div class="btn-contaniner">
+      <button mat-raised-button color="primary" (click)="onCreater()">Guardar</button>
+      <button mat-raised-button class="btn-cancel" color="warn">Cancelar</button>
+    </div>
   </form>
 </div>
