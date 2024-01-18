@@ -6,7 +6,8 @@
       <mat-option *ngFor="let option of filteredOptions | async; let track option" [value]="option.name"
         (onSelectionChange)="selectedColor(option.id)">
         {{option.name}}
-        <mat-icon aria-hidden="false" aria-label="Example home icon" color="#3456" fontIcon="circle"></mat-icon>
+        <mat-icon aria-hidden="false" aria-label="Example home icon" [ngStyle]="{'color': option.code}"
+          fontIcon="circle"></mat-icon>
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
