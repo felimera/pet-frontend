@@ -16,3 +16,20 @@
 #radio-gender {
   padding-bottom: 5px;
 }
+
+.container-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.marge-row-left {
+  padding: 1rem .5rem 1rem 0;
+}
+
+.marge-row-right {
+  padding: 1rem 0 1rem .5rem;
+}
+
+.label-select-row {
+  margin: 5rem .1rem;
+}

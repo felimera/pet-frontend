@@ -69,13 +69,22 @@
       <textarea matInput formControlName="characteristicsExtremities"></textarea>
     </mat-form-field>
 
-    <label>Select the predominant color of the pet's hair</label>
-    <app-color (mgColorEvent)="receiveColorMessage($event)" />
+    <div class="container-row">
+      <div class="form-field-full-width marge-row-left">
+        <label class="label-select-row">Select the predominant color of the pet's hair</label>
+        <app-color (mgColorEvent)="receiveColorMessage($event)" />
 
-    <label>Select the pet's body size</label>
-    <app-body-size (mgBodySizeEvent)="receiveBodySizeMessage($event)" />
+        <label class="label-select-row">Select the pet's body size</label>
+        <app-body-size (mgBodySizeEvent)="receiveBodySizeMessage($event)" />
+      </div>
 
-    <label>Select the type of pet figure</label>
-    <app-type-figure/>
+      <div class="form-field-full-width marge-row-right ">
+        <label class="label-select-row">Select the type of pet figure</label>
+        <app-type-figure (mgTypeFigureEvent)="receiveTypeFigureMessage($event)" />
+
+        <label class="label-select-row">Select the color of the pet's eyes</label>
+        <app-color (mgColorEvent)="receiveEyeColorMessage($event)" />
+      </div>
+    </div>
   </form>
 </div>
