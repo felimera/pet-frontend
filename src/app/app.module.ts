@@ -34,6 +34,7 @@ import { RegisterPetOwnerComponent } from './modules/layout/customers/component/
 import { RegisterPetComponent } from './modules/layout/customers/component/register-pet/register-pet.component';
 import { SearchPetOwnerComponent } from './modules/layout/customers/component/search-pet-owner/search-pet-owner.component';
 import { ColorComponent } from './modules/layout/customers/component/color/color.component';
+import { BodySizeComponent } from './modules/layout/customers/component/body-size/body-size.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ColorComponent } from './modules/layout/customers/component/color/color
     RegisterPetOwnerComponent,
     RegisterPetComponent,
     SearchPetOwnerComponent,
-    ColorComponent
+    ColorComponent,
+    BodySizeComponent
   ],
   imports: [
     BrowserModule,
