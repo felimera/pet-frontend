@@ -41,13 +41,6 @@
       <mat-radio-button value="F">Female</mat-radio-button>
     </mat-radio-group>
 
-    <mat-form-field>
-      <mat-label>Pet Category</mat-label>
-      <mat-select formArrayName="petCategory">
-        <mat-option *ngFor="let item of petCategories" [value]="item.id">{{item.value}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
     <mat-form-field class="form-field-full-width">
       <mat-label>Please input race.</mat-label>
       <input matInput type="text" formControlName="race">
@@ -58,8 +51,8 @@
 
     <mat-form-field class="form-field-full-width">
       <mat-label>Please input wheight.</mat-label>
-      <input matInput type="text" formControlName="wheight">
-      <button matSuffix mat-icon-button aria-label="Clear" (click)="clearWheight()">
+      <input matInput type="text" formControlName="wheightValue">
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="clearWheightValue()">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
@@ -79,6 +72,9 @@
       </div>
 
       <div class="form-field-full-width marge-row-right ">
+        <label class="label-select-row">Select the pet category</label>
+        <app-pet-category (mgPetCategoryEvent)="receivePetCategoryMessage($event)" />
+
         <label class="label-select-row">Select the type of pet figure</label>
         <app-type-figure (mgTypeFigureEvent)="receiveTypeFigureMessage($event)" />
 

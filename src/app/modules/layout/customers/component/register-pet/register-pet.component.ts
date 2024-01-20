@@ -13,12 +13,6 @@ interface PetCategories {
 })
 export class RegisterPetComponent implements OnInit {
 
-  petCategories: PetCategories[] = [
-    { id: 'pizza-1', value: 'Pizza' },
-    { id: 'tacos-2', value: 'Tacos' },
-    { id: 'steak-0', value: 'Steak' },
-  ];
-
   petForm: FormGroup<any> | any;
 
   ngOnInit(): void {
@@ -30,13 +24,14 @@ export class RegisterPetComponent implements OnInit {
       gender: new FormControl('', [Validators.required]),
       petCategory: new FormControl('', [Validators.required]),
       race: new FormControl('', [Validators.required]),
-      wheight: new FormControl('', [Validators.required]),
       characteristicsExtremities: new FormControl('', [Validators.required]),
       idCustomerEntity: new FormControl(0, [Validators.required]),
+      wheightValue: new FormControl('', [Validators.required]),
       idHairColorEntity: new FormControl(0, [Validators.required]),
       idBodySizeEntity: new FormControl(0, [Validators.required]),
       idTypeFigureEntity: new FormControl(0, [Validators.required]),
       idEyeColorEntity: new FormControl(0, [Validators.required]),
+      idPetCategoryEntity: new FormControl(0, [Validators.required]),
     });
   }
 
@@ -52,8 +47,8 @@ export class RegisterPetComponent implements OnInit {
     this.petForm.get("phone").setValue("");
   }
 
-  clearWheight(): void {
-    this.petForm.get("wheight");
+  clearWheightValue(): void {
+    this.petForm.get("wheightValue");
   }
 
   clearRace(): void {
@@ -78,6 +73,10 @@ export class RegisterPetComponent implements OnInit {
 
   receiveEyeColorMessage($event: number): void {
     this.petForm.get("idEyeColorEntity").setValue($event);
+  }
+
+  receivePetCategoryMessage($event: number): void {
+    this.petForm.get("idPetCategoryEntity").setValue($event);
   }
 
   onCreater(): void {
