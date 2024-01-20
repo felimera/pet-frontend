@@ -27,6 +27,7 @@ export class RegisterPetComponent implements OnInit {
       characteristicsExtremities: new FormControl('', [Validators.required]),
       idCustomerEntity: new FormControl(0, [Validators.required]),
       wheightValue: new FormControl('', [Validators.required]),
+      idMassMeasurementUnitsEntity: new FormControl(0, [Validators.required]),
       idHairColorEntity: new FormControl(0, [Validators.required]),
       idBodySizeEntity: new FormControl(0, [Validators.required]),
       idTypeFigureEntity: new FormControl(0, [Validators.required]),
@@ -77,6 +78,10 @@ export class RegisterPetComponent implements OnInit {
 
   receivePetCategoryMessage($event: number): void {
     this.petForm.get("idPetCategoryEntity").setValue($event);
+  }
+
+  receiveMassMeasurementUnitsMessage($event: number): void {
+    this.petForm.get("idMassMeasurementUnitsEntity").setValue($event);
   }
 
   onCreater(): void {

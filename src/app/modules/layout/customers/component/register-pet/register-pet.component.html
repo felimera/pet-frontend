@@ -49,14 +49,6 @@
       </button>
     </mat-form-field>
 
-    <mat-form-field class="form-field-full-width">
-      <mat-label>Please input wheight.</mat-label>
-      <input matInput type="text" formControlName="wheightValue">
-      <button matSuffix mat-icon-button aria-label="Clear" (click)="clearWheightValue()">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
-
     <mat-form-field>
       <mat-label>Enter the characteristics of all your limbs:</mat-label>
       <textarea matInput formControlName="characteristicsExtremities"></textarea>
@@ -64,6 +56,24 @@
 
     <div class="container-row">
       <div class="form-field-full-width marge-row-left">
+
+        <div class="container-row">
+          <div class="padding-row-right">
+            <label class="label-select-row">Enter the weight</label>
+            <mat-form-field class="form-field-full-width">
+              <mat-label>Please input wheight.</mat-label>
+              <input matInput type="text" formControlName="wheightValue">
+              <button matSuffix mat-icon-button aria-label="Clear" (click)="clearWheightValue()">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+          <div class="padding-row-left">
+            <label class="label-select-row">Select the unit of measure</label>
+            <app-mass-measurement-units (mgMassMeasurementUnitsEvent)="receiveMassMeasurementUnitsMessage($event)" />
+          </div>
+        </div>
+
         <label class="label-select-row">Select the predominant color of the pet's hair</label>
         <app-color (mgColorEvent)="receiveColorMessage($event)" />
 
