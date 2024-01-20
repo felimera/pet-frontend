@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { Pet } from 'src/app/core/models/pet.model';
+import { ToasterService } from 'src/app/infrastructure/services/generally/toaster.service';
 import { PetService } from 'src/app/infrastructure/services/pet/pet.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class RegisterPetComponent implements OnInit {
 
   constructor(
     private dateAdapter: DateAdapter<Date>,
-    private petService: PetService
+    private petService: PetService,
+    private toasterService: ToasterService
   ) {
     this.dateAdapter.setLocale('Es');
   }
@@ -56,7 +58,7 @@ export class RegisterPetComponent implements OnInit {
   }
 
   clearWeightValue(): void {
-    this.petForm.get("weightValue");
+    this.petForm.get("weightValue").setValue('');
   }
 
   clearRace(): void {
@@ -95,18 +97,33 @@ export class RegisterPetComponent implements OnInit {
     return this.datePipe.transform(dateOld, 'yyyy-MM-dd');
   }
 
+  clearAllFields(): void {
+    this.clearName();
+    this.clearAge();
+    this.clearPhone();
+    this.clearWeightValue();
+    this.clearRace();
+    this.petForm.get("birthdate").setValue('');
+    this.petForm.get("gender").setValue('');
+    this.petForm.get("characteristicsExtremities").setValue('');
+    this.petForm.get("idCustomerEntity").setValue(0);
+  }
+
   onCreater(): void {
     const birthdate = this.petForm.get("birthdate").value;
     const birthdateFormateada = this.getFormatearFecha(birthdate);
     this.petForm.get("birthdate").setValue(birthdateFormateada);
 
-    console.log('this.petForm.value', this.petForm.value);
-
     this.petService
       .createPet(this.petForm.value)
       .subscribe({
         next: (res: Pet) => {
-          console.log('res', res);
+          if (res) {
+            this.toasterService.info('Pet successfully registered.', "Pet create");
+            setTimeout(() => {
+              this.clearAllFields();
+            }, 3000);
+          }
         },
         error: (res: any) => console.log('error', res)
       });
