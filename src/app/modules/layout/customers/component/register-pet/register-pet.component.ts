@@ -2,6 +2,8 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
+import { Pet } from 'src/app/core/models/pet.model';
+import { PetService } from 'src/app/infrastructure/services/pet/pet.service';
 
 @Component({
   selector: 'app-register-pet',
@@ -15,7 +17,8 @@ export class RegisterPetComponent implements OnInit {
   petForm: FormGroup<any> | any;
 
   constructor(
-    private dateAdapter: DateAdapter<Date>
+    private dateAdapter: DateAdapter<Date>,
+    private petService: PetService
   ) {
     this.dateAdapter.setLocale('Es');
   }
@@ -30,7 +33,7 @@ export class RegisterPetComponent implements OnInit {
       race: new FormControl('', [Validators.required]),
       characteristicsExtremities: new FormControl('', [Validators.required]),
       idCustomerEntity: new FormControl(0, [Validators.required]),
-      wheightValue: new FormControl('', [Validators.required]),
+      weightValue: new FormControl('', [Validators.required]),
       idMassMeasurementUnitsEntity: new FormControl(0, [Validators.required]),
       idHairColorEntity: new FormControl(0, [Validators.required]),
       idBodySizeEntity: new FormControl(0, [Validators.required]),
@@ -52,8 +55,8 @@ export class RegisterPetComponent implements OnInit {
     this.petForm.get("phone").setValue("");
   }
 
-  clearWheightValue(): void {
-    this.petForm.get("wheightValue");
+  clearWeightValue(): void {
+    this.petForm.get("weightValue");
   }
 
   clearRace(): void {
@@ -89,7 +92,7 @@ export class RegisterPetComponent implements OnInit {
   }
 
   getFormatearFecha(dateOld: any): string | null {
-    return this.datePipe.transform(dateOld, 'yyyy-mm-dd');
+    return this.datePipe.transform(dateOld, 'yyyy-MM-dd');
   }
 
   onCreater(): void {
@@ -98,6 +101,15 @@ export class RegisterPetComponent implements OnInit {
     this.petForm.get("birthdate").setValue(birthdateFormateada);
 
     console.log('this.petForm.value', this.petForm.value);
+
+    this.petService
+      .createPet(this.petForm.value)
+      .subscribe({
+        next: (res: Pet) => {
+          console.log('res', res);
+        },
+        error: (res: any) => console.log('error', res)
+      });
   }
 }
 
