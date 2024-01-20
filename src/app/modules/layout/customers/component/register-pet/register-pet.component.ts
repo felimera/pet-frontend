@@ -1,10 +1,7 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
-interface PetCategories {
-  id: string;
-  value: string;
-}
+import { DateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-register-pet',
@@ -13,7 +10,15 @@ interface PetCategories {
 })
 export class RegisterPetComponent implements OnInit {
 
+  datePipe = new DatePipe('en-US');
+
   petForm: FormGroup<any> | any;
+
+  constructor(
+    private dateAdapter: DateAdapter<Date>
+  ) {
+    this.dateAdapter.setLocale('Es');
+  }
 
   ngOnInit(): void {
     this.petForm = new FormGroup({
@@ -22,7 +27,6 @@ export class RegisterPetComponent implements OnInit {
       birthdate: new FormControl('', [Validators.required]),
       age: new FormControl('', [Validators.required]),
       gender: new FormControl('', [Validators.required]),
-      petCategory: new FormControl('', [Validators.required]),
       race: new FormControl('', [Validators.required]),
       characteristicsExtremities: new FormControl('', [Validators.required]),
       idCustomerEntity: new FormControl(0, [Validators.required]),
@@ -84,7 +88,15 @@ export class RegisterPetComponent implements OnInit {
     this.petForm.get("idMassMeasurementUnitsEntity").setValue($event);
   }
 
+  getFormatearFecha(dateOld: any): string | null {
+    return this.datePipe.transform(dateOld, 'yyyy-mm-dd');
+  }
+
   onCreater(): void {
+    const birthdate = this.petForm.get("birthdate").value;
+    const birthdateFormateada = this.getFormatearFecha(birthdate);
+    this.petForm.get("birthdate").setValue(birthdateFormateada);
+
     console.log('this.petForm.value', this.petForm.value);
   }
 }
