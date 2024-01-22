@@ -17,39 +17,51 @@
   padding-bottom: 5px;
 }
 
-.container-row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 600px) {
+  .container-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .marge-row-left {
+    padding: 1rem .5rem 1rem 0;
+  }
+
+  .marge-row-right {
+    padding: 1rem 0 1rem .5rem;
+  }
+
+  .label-select-row {
+    margin: 5rem .1rem;
+  }
+
+  .btn-contaniner {
+    margin: auto;
+  }
+
+  .btn-saved {
+    margin-right: 1rem;
+  }
+
+  .btn-cancel {
+    margin-left: 1.2rem;
+  }
+
+  .padding-row-left {
+    padding-left: .5rem;
+  }
+
+  .padding-row-right {
+    padding-right: .5rem;
+  }
 }
 
-.marge-row-left {
-  padding: 1rem .5rem 1rem 0;
-}
-
-.marge-row-right {
-  padding: 1rem 0 1rem .5rem;
-}
-
-.label-select-row {
-  margin: 5rem .1rem;
-}
-
-.btn-contaniner {
-  margin: auto;
-}
-
-.btn-saved {
-  margin-right: 1rem;
-}
-
-.btn-cancel {
-  margin-left: 1.2rem;
-}
-
-.padding-row-left {
-  padding-left: .5rem;
-}
-
-.padding-row-right {
-  padding-right: .5rem;
+/* Small devices (portrait tablets and large phones, 599px and up) */
+@media only screen and (max-width: 599px) {
+  .container-row {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
