@@ -8,6 +8,8 @@ import { MediaService } from 'src/app/infrastructure/services/media/media.servic
 })
 export class RegisterPetMediaComponent implements OnInit {
 
+  url?: string;
+
   constructor(private mediaService: MediaService) { }
 
   ngOnInit() {
@@ -24,7 +26,8 @@ export class RegisterPetMediaComponent implements OnInit {
       this.mediaService.uploadFile(formData)
         .subscribe({
           next: (response: any) => {
-            console.log('response', response)
+            console.log('response', response);
+            this.url = response.url;
           },
           error: (response: any) => console.log(response.error)
         });

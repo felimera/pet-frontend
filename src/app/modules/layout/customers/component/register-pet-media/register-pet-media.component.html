@@ -3,4 +3,8 @@
     <label for="image">Imagen</label>
     <input type="file" id="image" accept="image/*" (change)="upload($event)">
   </div>
+
+  <div *ngIf="url">
+    <img [src]="url" alt="">
+  </div>
 </div>
