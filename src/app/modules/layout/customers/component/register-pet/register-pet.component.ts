@@ -114,19 +114,23 @@ export class RegisterPetComponent implements OnInit {
     const birthdateFormateada = this.getFormatearFecha(birthdate);
     this.petForm.get("birthdate").setValue(birthdateFormateada);
 
-    this.petService
-      .createPet(this.petForm.value)
-      .subscribe({
-        next: (res: Pet) => {
-          if (res) {
-            this.toasterService.info('Pet successfully registered.', "Pet create");
-            setTimeout(() => {
-              this.clearAllFields();
-            }, 3000);
-          }
-        },
-        error: (res: any) => console.log('error', res)
-      });
+    if (this.petForm.valid) {
+      this.petService
+        .createPet(this.petForm.value)
+        .subscribe({
+          next: (res: Pet) => {
+            if (res) {
+              this.toasterService.info('Pet successfully registered.', "Pet create");
+              setTimeout(() => {
+                this.clearAllFields();
+              }, 3000);
+            }
+          },
+          error: (res: any) => console.log('error', res)
+        });
+    } else {
+      this.toasterService.warning("You must register all mandatory data.", "Warning");
+    }
   }
 }
 
