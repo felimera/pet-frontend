@@ -18,7 +18,7 @@ export class RegisterPetOwnerComponent implements OnInit {
 
   constructor(
     private customerService: CustomerService,
-    private toaster:ToasterService
+    private toaster: ToasterService
   ) { }
 
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class RegisterPetOwnerComponent implements OnInit {
       lastName: new FormControl('', [Validators.required]),
       homeAddress: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       isOlder: new FormControl(false, [Validators.required]),
     });
   }
@@ -36,16 +36,20 @@ export class RegisterPetOwnerComponent implements OnInit {
   clearFirtName(): void {
     this.customerForm.get('firstName').setValue('');
   }
+
   clearLastName(): void {
     this.customerForm.get('lastName').setValue('');
   }
+
   clearHomeAddress(): void {
     this.customerForm.get('homeAddress').setValue('');
   }
+
   clearHomePhone(): void {
     this.customerForm.get('phone').setValue('');
   }
-  clearHomeEmail() {
+
+  clearHomeEmail(): void {
     this.customerForm.get('email').setValue('');
   }
 
@@ -57,14 +61,18 @@ export class RegisterPetOwnerComponent implements OnInit {
   }
 
   onCreater(): void {
-    this.customerService
-      .createCustomer(this.customerForm.value)
-      .subscribe({
-        next: (res: Customer) => {
-          this.toaster.info("The client has been registered correctly.","Manage customer information")
-        },
-        error: res => console.log('error', res.error)
-      })
+    if (this.customerForm.valid) {
+      this.customerService
+        .createCustomer(this.customerForm.value)
+        .subscribe({
+          next: (res: Customer) => {
+            this.toaster.info("The client has been registered correctly.", "Manage customer information")
+          },
+          error: res => console.log('error', res.error)
+        });
+    } else {
+      this.toaster.warning("You must register all mandatory data.", "Warning");
+    }
   }
 }
 
