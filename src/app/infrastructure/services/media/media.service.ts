@@ -12,7 +12,7 @@ export class MediaService {
   constructor(private http: HttpClient) { }
 
   uploadFile(formData: FormData): Observable<any> {
-    return this.http.post<any>(this.apiUrl, formData);
+    return this.http.post<any>(this.apiUrl+'/upload', formData);
   }
 
 }
