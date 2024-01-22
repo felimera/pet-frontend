@@ -38,6 +38,7 @@ import { BodySizeComponent } from './modules/layout/customers/component/body-siz
 import { TypeFigureComponent } from './modules/layout/customers/component/type-figure/type-figure.component';
 import { PetCategoryComponent } from './modules/layout/customers/component/pet-category/pet-category.component';
 import { MassMeasurementUnitsComponent } from './modules/layout/customers/component/mass-measurement-units/mass-measurement-units.component';
+import { RegisterPetMediaComponent } from './modules/layout/customers/component/register-pet-media/register-pet-media.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { MassMeasurementUnitsComponent } from './modules/layout/customers/compon
     BodySizeComponent,
     TypeFigureComponent,
     PetCategoryComponent,
-    MassMeasurementUnitsComponent
+    MassMeasurementUnitsComponent,
+    RegisterPetMediaComponent
   ],
   imports: [
     BrowserModule,
