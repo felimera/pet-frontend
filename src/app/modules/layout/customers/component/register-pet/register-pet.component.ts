@@ -148,8 +148,10 @@ export class RegisterPetComponent implements OnInit {
       this.mediaService.uploadFile(formData)
         .subscribe({
           next: (response: any) => {
-            console.log('response', response);
-            this.url = response.url;
+            if (response) {
+              this.url = response.url;
+              this.petForm.get("phone").setValue(this.url);
+            }
           },
           error: (response: any) => console.log(response.error)
         });
