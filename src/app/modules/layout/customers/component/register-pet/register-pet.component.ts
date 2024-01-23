@@ -3,9 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { Pet } from 'src/app/core/models/pet.model';
+import { PhotoPet } from 'src/app/core/models/photo-pet.model';
 import { ToasterService } from 'src/app/infrastructure/services/generally/toaster.service';
 import { MediaService } from 'src/app/infrastructure/services/media/media.service';
 import { PetService } from 'src/app/infrastructure/services/pet/pet.service';
+import { PhotoPetService } from 'src/app/infrastructure/services/photo/photo-pet.service';
 
 @Component({
   selector: 'app-register-pet',
@@ -24,7 +26,8 @@ export class RegisterPetComponent implements OnInit {
     private dateAdapter: DateAdapter<Date>,
     private petService: PetService,
     private toasterService: ToasterService,
-    private mediaService: MediaService
+    private mediaService: MediaService,
+    private photoPetService: PhotoPetService
   ) {
     this.dateAdapter.setLocale('Es');
   }
@@ -124,6 +127,7 @@ export class RegisterPetComponent implements OnInit {
         .subscribe({
           next: (res: Pet) => {
             if (res) {
+              this.createPhoto(res);
               this.toasterService.info('Pet successfully registered.', "Pet create");
               setTimeout(() => {
                 this.clearAllFields();
@@ -156,6 +160,21 @@ export class RegisterPetComponent implements OnInit {
           error: (response: any) => console.log(response.error)
         });
     }
+  }
+
+  createPhoto(data: Pet): void {
+
+    const photoPet: PhotoPet = {
+      location: data.photo,
+      profilePicture: true,
+      petId: data.id ? data.id : 0
+    };
+    this.photoPetService
+      .createPhotoPet(photoPet)
+      .subscribe({
+        next: (res: PhotoPet) => { },
+        error: (res: any) => console.log('error', res)
+      });
   }
 }
 
