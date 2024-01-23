@@ -12,8 +12,8 @@ export class Pet {
     public idTypeFigureEntity: number,
     public idEyeColorEntity: number,
     public idPetCategoryEntity: number,
+    public photo: string,
     public id?: number,
-    public photo?: string,
     public birthdate?: string,
     public age?: string
   ) { }
