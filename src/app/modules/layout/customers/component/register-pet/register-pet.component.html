@@ -55,6 +55,16 @@
     </mat-form-field>
 
     <div class="container-row">
+      <div class="container">
+        <mat-label class="label-text" for="image">Select the image</mat-label>
+        <input type="file" id="image" accept="image/*" (change)="upload($event)">
+      </div>
+      <div class="container container-image">
+        <img [src]="url" alt="">
+      </div>
+    </div>
+
+    <div class="container-row">
       <div class="form-field-full-width marge-row-left">
 
         <div class="container-row">

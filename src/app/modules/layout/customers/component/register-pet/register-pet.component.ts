@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { Pet } from 'src/app/core/models/pet.model';
 import { ToasterService } from 'src/app/infrastructure/services/generally/toaster.service';
+import { MediaService } from 'src/app/infrastructure/services/media/media.service';
 import { PetService } from 'src/app/infrastructure/services/pet/pet.service';
 
 @Component({
@@ -17,10 +18,13 @@ export class RegisterPetComponent implements OnInit {
 
   petForm: FormGroup<any> | any;
 
+  url?: string;
+
   constructor(
     private dateAdapter: DateAdapter<Date>,
     private petService: PetService,
-    private toasterService: ToasterService
+    private toasterService: ToasterService,
+    private mediaService: MediaService
   ) {
     this.dateAdapter.setLocale('Es');
   }
@@ -130,6 +134,25 @@ export class RegisterPetComponent implements OnInit {
         });
     } else {
       this.toasterService.warning("You must register all mandatory data.", "Warning");
+    }
+  }
+
+  upload(event: any): void {
+
+    const file = event.target.files[0];
+
+    if (file) {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      this.mediaService.uploadFile(formData)
+        .subscribe({
+          next: (response: any) => {
+            console.log('response', response);
+            this.url = response.url;
+          },
+          error: (response: any) => console.log(response.error)
+        });
     }
   }
 }

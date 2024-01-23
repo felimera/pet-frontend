@@ -17,6 +17,35 @@
   padding-bottom: 5px;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-image {
+  margin: auto;
+  background-color: darkgrey;
+  height: 20rem;
+  width: 20rem;
+}
+
+input[type="file"]::file-selector-button {
+  background-color: #3f51b5;
+  color: #FFFF;
+  padding: 1rem;
+  border-radius: 5px;
+  border: none;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+input[type=file]::file-selector-button:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 1px 6px 14px -2px rgba(207, 199, 207, 1);
+  -moz-box-shadow: 1px 6px 14px -2px rgba(207, 199, 207, 1);
+  box-shadow: 1px 6px 14px -2px rgba(207, 199, 207, 1);
+}
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (min-width: 600px) {
