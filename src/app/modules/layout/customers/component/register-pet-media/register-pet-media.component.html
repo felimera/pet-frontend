@@ -1,10 +1,13 @@
-<div>
-  <div>
-    <label for="image">Imagen</label>
-    <input type="file" id="image" accept="image/*" (change)="upload($event)">
+<div class="card">
+  <div class="container card-body">
+    <h3>Register images of pets.</h3>
+
+    
+    <mat-label class="label-text" for="image">Select the image</mat-label>
+      <input type="file" id="image" accept="image/*" (change)="upload($event)">
   </div>
 
-  <div *ngIf="url">
+  <div class="container card-body" *ngIf="url">
     <img [src]="url" alt="">
   </div>
 </div>
