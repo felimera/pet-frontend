@@ -32,9 +32,9 @@ export class RegisterPetComponent implements OnInit {
   ngOnInit(): void {
     this.petForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required]),
-      birthdate: new FormControl('', [Validators.required]),
-      age: new FormControl('', [Validators.required]),
+      photo: new FormControl('', [Validators.required]),
+      birthdate: new FormControl(''),
+      age: new FormControl(''),
       gender: new FormControl('', [Validators.required]),
       race: new FormControl('', [Validators.required]),
       characteristicsExtremities: new FormControl('', [Validators.required]),
@@ -57,8 +57,8 @@ export class RegisterPetComponent implements OnInit {
     this.petForm.get("age").setValue("");
   }
 
-  clearPhone(): void {
-    this.petForm.get("phone").setValue("");
+  clearPhoto(): void {
+    this.petForm.get("photo").setValue("");
   }
 
   clearWeightValue(): void {
@@ -104,7 +104,7 @@ export class RegisterPetComponent implements OnInit {
   clearAllFields(): void {
     this.clearName();
     this.clearAge();
-    this.clearPhone();
+    this.clearPhoto();
     this.clearWeightValue();
     this.clearRace();
     this.petForm.get("birthdate").setValue('');
@@ -150,7 +150,7 @@ export class RegisterPetComponent implements OnInit {
           next: (response: any) => {
             if (response) {
               this.url = response.url;
-              this.petForm.get("phone").setValue(this.url);
+              this.petForm.get("photo").setValue(this.url);
             }
           },
           error: (response: any) => console.log(response.error)
