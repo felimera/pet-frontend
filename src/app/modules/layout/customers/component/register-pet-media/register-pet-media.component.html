@@ -2,9 +2,10 @@
   <div class="container card-body">
     <h3>Register images of pets.</h3>
 
-    
+    <app-search-pet />
+
     <mat-label class="label-text" for="image">Select the image</mat-label>
-      <input type="file" id="image" accept="image/*" (change)="upload($event)">
+    <input type="file" id="image" accept="image/*" (change)="upload($event)">
   </div>
 
   <div class="container card-body" *ngIf="url">
