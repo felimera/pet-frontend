@@ -47,6 +47,12 @@ input[type=file]::file-selector-button:hover {
   box-shadow: 1px 6px 14px -2px rgba(207, 199, 207, 1);
 }
 
+img {
+  display: block;
+  margin: auto;
+  width: 100%;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (min-width: 600px) {
   .container-row {
