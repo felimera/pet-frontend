@@ -53,6 +53,10 @@ export class RegisterPetOwnerComponent implements OnInit {
     this.customerForm.get('email').setValue('');
   }
 
+  clearIsOlder(): void {
+    this.customerForm.get("isOlder").setValue(false);
+  }
+
   getErrorMessage(): string {
     if (this.customerForm.valid && this.customerForm.get('email')!.value.hasError('required')) {
       return 'You must enter a value';
@@ -66,13 +70,27 @@ export class RegisterPetOwnerComponent implements OnInit {
         .createCustomer(this.customerForm.value)
         .subscribe({
           next: (res: Customer) => {
-            this.toaster.info("The client has been registered correctly.", "Manage customer information")
+            if (res) {
+              this.toaster.info("The client has been registered correctly.", "Manage customer information")
+              setTimeout(() => {
+                this.clearAllField();
+              }, 3000);
+            }
           },
           error: res => console.log('error', res.error)
         });
     } else {
       this.toaster.warning("You must register all mandatory data.", "Warning");
     }
+  }
+
+  clearAllField(): void {
+    this.clearFirtName();
+    this.clearLastName();
+    this.clearHomeAddress();
+    this.clearHomeEmail();
+    this.clearHomePhone();
+    this.clearIsOlder();
   }
 }
 
