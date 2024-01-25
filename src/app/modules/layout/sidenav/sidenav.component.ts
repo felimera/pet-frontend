@@ -108,7 +108,7 @@ export class SidenavComponent implements OnInit {
     this.cookieService.delete('usuario');
     localStorage.removeItem('TOKEN');
     this.toasterService.info('Haz cerrado sesion.', 'User sign out')
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/dashboard');
     setTimeout(() => {
       window.location.reload();
     }, 3000);
