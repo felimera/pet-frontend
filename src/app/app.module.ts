@@ -40,6 +40,7 @@ import { PetCategoryComponent } from './modules/layout/customers/component/pet-c
 import { MassMeasurementUnitsComponent } from './modules/layout/customers/component/mass-measurement-units/mass-measurement-units.component';
 import { RegisterPetMediaComponent } from './modules/layout/customers/component/register-pet-media/register-pet-media.component';
 import { SearchPetComponent } from './modules/layout/customers/component/search-pet/search-pet.component';
+import { RaceComponent } from './modules/layout/customers/component/race/race.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { SearchPetComponent } from './modules/layout/customers/component/search-
     PetCategoryComponent,
     MassMeasurementUnitsComponent,
     RegisterPetMediaComponent,
-    SearchPetComponent
+    SearchPetComponent,
+    RaceComponent
   ],
   imports: [
     BrowserModule,
