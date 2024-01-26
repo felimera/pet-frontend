@@ -39,16 +39,14 @@ export class RegisterPetComponent implements OnInit {
       birthdate: new FormControl(''),
       age: new FormControl(''),
       gender: new FormControl('', [Validators.required]),
-      race: new FormControl('', [Validators.required]),
       characteristicsExtremities: new FormControl('', [Validators.required]),
       idCustomerEntity: new FormControl(0, [Validators.required]),
       weightValue: new FormControl('', [Validators.required]),
       idMassMeasurementUnitsEntity: new FormControl(0, [Validators.required]),
       idHairColorEntity: new FormControl(0, [Validators.required]),
-      idBodySizeEntity: new FormControl(0, [Validators.required]),
       idTypeFigureEntity: new FormControl(0, [Validators.required]),
       idEyeColorEntity: new FormControl(0, [Validators.required]),
-      idPetCategoryEntity: new FormControl(0, [Validators.required]),
+      idRaceEntity:new FormControl(0,[Validators.required])
     });
   }
 
@@ -68,20 +66,12 @@ export class RegisterPetComponent implements OnInit {
     this.petForm.get("weightValue").setValue('');
   }
 
-  clearRace(): void {
-    this.petForm.get("race").setValue("");
-  }
-
   receiveMessage($event: number): void {
     this.petForm.get("idCustomerEntity").setValue($event);
   }
 
   receiveColorMessage($event: number): void {
     this.petForm.get("idHairColorEntity").setValue($event);
-  }
-
-  receiveBodySizeMessage($event: number): void {
-    this.petForm.get("idBodySizeEntity").setValue($event);
   }
 
   receiveTypeFigureMessage($event: number): void {
@@ -92,12 +82,12 @@ export class RegisterPetComponent implements OnInit {
     this.petForm.get("idEyeColorEntity").setValue($event);
   }
 
-  receivePetCategoryMessage($event: number): void {
-    this.petForm.get("idPetCategoryEntity").setValue($event);
-  }
-
   receiveMassMeasurementUnitsMessage($event: number): void {
     this.petForm.get("idMassMeasurementUnitsEntity").setValue($event);
+  }
+
+  receiveRaceMessage($event: number): void {
+    this.petForm.get("idRaceEntity").setValue($event);
   }
 
   getFormatearFecha(dateOld: any): string | null {
@@ -109,7 +99,6 @@ export class RegisterPetComponent implements OnInit {
     this.clearAge();
     this.clearPhoto();
     this.clearWeightValue();
-    this.clearRace();
     this.petForm.get("birthdate").setValue('');
     this.petForm.get("gender").setValue('');
     this.petForm.get("characteristicsExtremities").setValue('');
